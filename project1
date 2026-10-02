@@ -1484,7 +1484,7 @@
     local ItemsModule = Modules and require(Modules.Items)
     local Guns = {}
     for name, data in next, ItemsModule do
-        if data.Type == "Gun" then
+        if type(data) == "table" and data.Type == "Gun" then
             Guns[name] = type(data.Image) == 'string' and data.Image or type(data.Image) == 'table' and data.Image.Default or nil
         end
     end
